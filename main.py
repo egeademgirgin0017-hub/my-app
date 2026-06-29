@@ -17,8 +17,14 @@ db = client["tarim_web"]   # senin database adın
 def read_root():
     return {"message": "Backend çalışıyor!"}
 
-# Örnek: koleksiyondan veri çekme
+# Items koleksiyonundan veri çekme
 @app.get("/items")
 def get_items():
-    items = list(db["items"].find({}, {"_id": 0}))  # _id gizleniyor
+    items = list(db["items"].find({}, {"_id": 0}))
     return {"data": items}
+
+# Urunler koleksiyonundan veri çekme
+@app.get("/urunler")
+def get_urunler():
+    urunler = list(db["urunler"].find({}, {"_id": 0}))
+    return {"data": urunler}
